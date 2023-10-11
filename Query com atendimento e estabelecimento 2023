@@ -1,0 +1,8 @@
+SELECT b.ds_setor_atendimento, a.dt_entrada_unidade, a.dt_atualizacao, a.*
+FROM ATEND_PACIENTE_UNIDADE a, setor_atendimento b, pessoa_fisica c, estabelecimento d
+WHERE c.nm_pessoa_fisica LIKE 'RN%'
+  AND c.cd_estabelecimento = d.cd_estabelecimento
+  AND a.cd_setor_atendimento = b.cd_setor_atendimento
+  AND TO_CHAR(a.dt_entrada_unidade, 'YYYY') = '2023' -- Filtro para o ano de 2023
+  AND b.cd_setor_atendimento = 125
+ORDER BY 1;
